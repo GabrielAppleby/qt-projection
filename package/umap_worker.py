@@ -15,6 +15,6 @@ class UMAPWorker(QObject):
         self._hyper_params = hyper_params
 
     def run(self):
-        projection = UMAP(n_neighbors=self._hyper_params[0], n_jobs=4).fit_transform(
+        projection = UMAP(n_neighbors=self._hyper_params[0], n_jobs=4, n_components=3, verbose=True).fit_transform(
             self._data)
-        self.finished.emit(pd.DataFrame(projection))
+        self.finished.emit(projection)

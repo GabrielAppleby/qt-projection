@@ -1,4 +1,4 @@
-from PySide6.QtCore import QThread
+from PySide6.QtCore import QThread, Slot
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton
 
 from package.data_store import DataStore
@@ -22,6 +22,7 @@ class ProjectionWidget(QWidget):
         self._window_layout.addWidget(self._button)
         self.setLayout(self._window_layout)
 
+    @Slot()
     def _project(self) -> None:
         self._projectionWorker = UMAPWorker(self._data.get_data().values, [5])
         self._projectionWorker.moveToThread(self._projectionThread)

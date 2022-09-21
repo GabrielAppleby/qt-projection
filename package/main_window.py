@@ -14,7 +14,7 @@ class MainWindow(QWidget):
         self._tab_widget = QTabWidget()
         self._window_layout = QVBoxLayout()
         self._data_tab = DataTab(self._data)
-        # self._projection_tab = ProjectionTab(self._data)
+        self._projection_tab = ProjectionTab(self._data)
 
         self._init_ui()
 
@@ -23,5 +23,5 @@ class MainWindow(QWidget):
         self.showMaximized()
         self._window_layout.addWidget(self._tab_widget)
         self._tab_widget.addTab(self._data_tab, 'Data')
-        # self._tab_widget.addTab(self._projection_tab, 'Projection')
+        self._tab_widget.addTab(self._projection_tab, 'Projection')
         self.setLayout(self._window_layout)
